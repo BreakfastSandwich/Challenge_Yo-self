@@ -17,6 +17,14 @@ body {
 
 }
 
+.hide{
+    display: none;
+}
+
+.show{
+    display: flex;
+}
+
 .header {
 
     background-color: #999;
@@ -76,17 +84,15 @@ body {
     border: none;
     border-radius: .5rem;
     height: 50rem;
-   
     flex: 0 1 60%;
     padding: 5rem;
     margin: 5rem;
     margin-top: 3rem;
     margin-bottom: 3rem;
-
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
     box-shadow: 0 2px 5px 1px #777;
+    display: flex;
 
 
 }
