@@ -38,6 +38,70 @@ body {
    
 }
 
+#start-btn {
+    flex-wrap: wrap;
+    align-self: center;
+    text-align: center;
+     height: 2em;
+     width: 6em;
+     background-color: lightblue;
+     border-radius: .5em;
+     font-size: .8rem;
+     box-shadow: 0 2px 5px 1px #999;
+     padding: 0em;
+     margin: .5em;
+     transition: ease-in-out 100ms;
+ }
+ 
+ #start-btn:hover {
+     background-color: rgb(99, 157, 177);
+     box-shadow: 0 2px 5px 1px #777;
+     color: white;
+     font-size: .85rem;
+ }
+
+ #viewScore {
+    flex-wrap: wrap;
+    align-self: center;
+    text-align: center;
+     height: 2em;
+     width: 10em;
+     background-color: lightblue;
+     border-radius: .5em;
+     font-size: .8rem;
+     box-shadow: 0 2px 5px 1px #999;
+     padding: 0em;
+     margin: .5em;
+ }
+ 
+ #viewScore:hover {
+     background-color: rgb(99, 157, 177);
+     box-shadow: 0 2px 5px 1px #777;
+     color: white;
+     font-size: .85rem;
+ }
+
+ #next-btn {
+    flex-wrap: wrap;
+    align-self: center;
+    text-align: center;
+     height: 2em;
+     width: 6em;
+     background-color: lightblue;
+     border-radius: .5em;
+     font-size: .8rem;
+     box-shadow: 0 2px 5px 1px #999;
+     padding: 0em;
+     margin: .5em;
+ }
+ 
+ #next-btn:hover {
+     background-color: rgb(99, 157, 177);
+     box-shadow: 0 2px 5px 1px #777;
+     color: white;
+     font-size: .85rem;
+ }
+
 .header {
 
     background-color: #999;
