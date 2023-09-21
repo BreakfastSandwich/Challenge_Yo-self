@@ -72,6 +72,7 @@ body {
      box-shadow: 0 2px 5px 1px #999;
      padding: 0em;
      margin: .5em;
+     transition: ease-in-out 100ms
  }
  
  #viewScore:hover {
@@ -93,6 +94,7 @@ body {
      box-shadow: 0 2px 5px 1px #999;
      padding: 0em;
      margin: .5em;
+     transition: ease-in-out 100ms
  }
  
  #next-btn:hover {
@@ -189,7 +191,7 @@ body {
     box-shadow: 0 2px 5px 1px #999;
     padding: 1rem;
     margin: 1rem;
-
+    transition: ease-in-out 100ms
 }
 
 .answer:hover, .answer:focus {
