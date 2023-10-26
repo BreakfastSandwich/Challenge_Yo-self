@@ -53,32 +53,9 @@ var scoreEl = document.getElementById('score')
 var timerEl = document.getElementById('timer')
 var nextBtnEl = document.getElementById('next-btn')
 var startBtnEl = document.getElementById('start-btn')
-var answerbuttonsEl = document.getElementsByClassName('answer-section')
-var questionNumber = 0
-var a1El = document.getElementById('a1')
-var a2El = document.getElementById('a2')
-var a3El = document.getElementById('a3')
-var a4El = document.getElementById('a4')
+var answerbuttonsEl = document.getElementById('answer_section')
 var answersEl = document.querySelectorAll('.answer')
-// var eventEl = event.target
-// console.log(answersEl)
-
-
-
-
-function wrongAnswer() {
-    secondsLeft = secondsLeft - 10
-    verdictEl.textContent = "Inorrect!"
-    questionNumber++
-}
-
-function correctAnswer() {
-    score = score + 10
-    verdictEl.setAttribute('class', 'show')
-    verdictEl.textContent = "Correct!"
-    questionNumber++
-}
-
+var questNum = 0
 
 
 
@@ -87,19 +64,19 @@ var questionArray = [
         question: "What is the coding languge that adds style to a webpage?",
         answer: [
             {
-                potentalAnswer: "CSS",
+                potentialAnswer: "CSS",
                 correct: true,
             },
             {
-                potentalAnswer: "HTML",
+                potentialAnswer: "HTML",
                 correct: false,
             },
             {
-                potentalAnswer: "JavaScript",
+                potentialAnswer: "JavaScript",
                 correct: false,
             },
             {
-                potentalAnswer: "Disco",
+                potentialAnswer: "Disco",
                 correct: false,
             }
         ]
@@ -108,19 +85,19 @@ var questionArray = [
         question: "what is the best flavor of Ice Cream?",
         answer: [
             {
-                potentalAnswer: "Cookies and Cream",
+                potentialAnswer: "Cookies and Cream",
                 correct: true,
             },
             {
-                potentalAnswer: "Rocky Roads",
+                potentialAnswer: "Rocky Roads",
                 correct: false,
             },
             {
-                potentalAnswer: "MooseTracks",
+                potentialAnswer: "MooseTracks",
                 correct: false,
             },
             {
-                potentalAnswer: "Vanilla",
+                potentialAnswer: "Vanilla",
                 correct: false,
             }
         ]
@@ -129,19 +106,19 @@ var questionArray = [
         question: "What animal makes the best pet?",
         answer: [
             {
-                potentalAnswer: "Dog",
+                potentialAnswer: "Dog",
                 correct: true,
             },
             {
-                potentalAnswer: "Cat",
+                potentialAnswer: "Cat",
                 correct: false,
             },
             {
-                potentalAnswer: "Black Bear",
+                potentialAnswer: "Black Bear",
                 correct: false,
             },
             {
-                potentalAnswer: "Moose",
+                potentialAnswer: "Moose",
                 correct: false,
             }
         ]
@@ -150,19 +127,19 @@ var questionArray = [
         question: "What is the best Gaming Console",
         answer: [
             {
-                potentalAnswer: "PC",
+                potentialAnswer: "PC",
                 correct: true,
             },
             {
-                potentalAnswer: "XBox",
+                potentialAnswer: "XBox",
                 correct: false,
             },
             {
-                potentalAnswer: "Playstation",
+                potentialAnswer: "Playstation",
                 correct: false,
             },
             {
-                potentalAnswer: "Nintendo Switch",
+                potentialAnswer: "Nintendo Switch",
                 correct: false,
             }
         ]
@@ -171,28 +148,25 @@ var questionArray = [
         question: "What is the best season?",
         answer: [
             {
-                potentalAnswer: "Winter",
+                potentialAnswer: "Winter",
                 correct: true,
             },
             {
-                potentalAnswer: "Summer",
+                potentialAnswer: "Summer",
                 correct: false,
             },
             {
-                potentalAnswer: "Fall",
+                potentialAnswer: "Fall",
                 correct: false,
             },
             {
-                potentalAnswer: "Spring",
+                potentialAnswer: "Spring",
                 correct: false,
             }
         ]
     }]
 
 
-// var questionList = [question1, question2, question3, question4, question5]
-var question = questionArray[questionNumber].question
-var answers = questionArray[questionNumber].answer
 
 var score = 0
 var secondsLeft = 60
@@ -209,19 +183,11 @@ function countDownTimer() {
 
             endGame()
         }
-    }, 100)
+    }, 1000)
 };
 
 
-function submitQ() {
 
-    console.log("tacos")
-    if (answer === true && secondsLeft >=0) {
-        correctAnswer()
-    } else if (answer === false || secondsLeft <=0 ) {
-        wrongAnswer
-    }
-}
 
 function startQuiz() {
 
@@ -230,74 +196,71 @@ function startQuiz() {
     scoreboardEl.setAttribute('class', 'hide')
     verdictEl.setAttribute('class', 'hide')
     countDownTimer()
+    questionNumber(questNum)
+}
 
 
 
 
 
-    var eventEl = event.target
+const questionNumber = (questNum) => {
 
-    questionEl.textContent = question
-    a1El.textContent = answers[0].potentalAnswer
-    let a1 = answers[0].correct
-    a1El.setAttribute('data-correct', a1)
-    let a1ElAtt = a1El.getAttribute('data-correct')
-    console.log(answers, a1)
-    let a2 = answers[1].correct
-    a2El.textContent = answers[1].potentalAnswer
-    a2El.setAttribute('data-correct', a2)
+    if (questNum >= questionArray.length) {
+        return endGame()
+    }
 
-    let a3 = answers[2].correct
-    a3El.textContent = answers[2].potentalAnswer
-    a3El.setAttribute('data-correct', a3)
-
-    let a4 = answers[3].correct
-    a4El.textContent = answers[3].potentalAnswer
-    a4El.setAttribute('data-correct', a4)
-
-   
-    eventEl.addEventListener('click', function test() {
-        console.log("taco")
-
-    })
-
-    verdictEl.setAttribute('class', 'show')
-    verdictEl.textContent = "Correct!"
-
-
-    a1El.addEventListener('click', submitQ)
-
-
-
-
-
-    // var answers = questionList[questionNumber].potentalAnswer
-    // console.log(answers)
-
-    // questionEl.textContent = question
-    // a1El.textContent = questionList[questionNumber].answer.potentalAnswer[0]
-    // a2El.textContent = questionList[questionNumber].potentalAnswer[1]
-    // a3El.textContent = questionList[questionNumber].potentalAnswer[2]
-    // a4El.textContent = questionList[questionNumber].potentalAnswer[3]
-
-
-    // for (var i = 0; i < questionList.length; i++)
-    //     if (
-
-    //     )
+    let currentQuestion = questionArray[questNum].question
+    let answerArray = questionArray[questNum].answer
+    questionEl.textContent = currentQuestion
 
 
 
 
 
 
+    answerbuttonsEl.innerHTML = ''
+    for (let i = 0; i < answerArray.length; i++) {
+        console.log(i)
+
+        let button = document.createElement("button")
+        button.innerText = answerArray[i].potentialAnswer
+        button.setAttribute('data-correct', answerArray[i].correct)
+        button.setAttribute('class', 'answer')
+        button.addEventListener('click', buttonHandler);
+        answerbuttonsEl.appendChild(button)
+        nextBtnEl.classList.add('hide')
+        verdictEl.classList.add('hide')
+    }
+}
 
 
+const buttonHandler = function (event) {
+    console.log(event.target)
+    let answer = this.getAttribute('data-correct')
+    console.log(answer)
+
+    if (answer == 'true' && secondsLeft >= 0) {
+        console.log('correct')
+        score = score + 10
+        verdictEl.setAttribute('class', 'show')
+        verdictEl.textContent = "Correct!"
+        nextBtnEl.classList.remove('hide')
+        return score
+    }
+
+    else if (answer == 'false' || secondsLeft <= 0) {
+        console.log('incorrect')
+        secondsLeft = secondsLeft - 10
+        verdictEl.setAttribute('class', 'show')
+        verdictEl.textContent = "Inorrect!"
+        nextBtnEl.classList.remove('hide')
+        return secondsLeft
+    }
+}
+
+nextBtnEl.addEventListener('click', () => questionNumber(++questNum))
 
 
-
-
-};
 
 startBtnEl.addEventListener('click', startQuiz);
 
@@ -310,5 +273,7 @@ function endGame() {
     quizSectionEl.setAttribute('class', 'hide')
     scoreboardEl.setAttribute('class', 'show')
     verdictEl.setAttribute('class', 'hide')
+    secondsLeft = ('')
     enterScore()
 }
+

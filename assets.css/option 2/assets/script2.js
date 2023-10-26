@@ -16,21 +16,21 @@ questionEl.textContent = currentQuestion
 
 for (let i = 0; i < answerArray.length; i++) {
 
-    let button[i] = document.createElement("button")
-    button[i].innerText = answerArray[i]
-    button[i].setAttribute('data-correct', answerArray[i].correct)
-    answerbuttonsEl.appendChild(button[i])
-    
-    answerArray[i]
-
-
+    let button = document.createElement("button")
+    button.innerText = answerArray[i]
+    button.setAttribute('data-correct', answerArray[i].correct)
+    button.setAttribute('class', 'answer')
+    button.addEventListener('click', buttonHandler);
+    answerbuttonsEl.appendChild(button)
+      
   }
-
-
 }
 
 
 const buttonHandler = function () {
+
+    let answer = this.getAttribute('data-correct')
+
 
 if (answer === true && secondsLeft >=0) {
     score = score + 10
@@ -47,7 +47,3 @@ if (answer === true && secondsLeft >=0) {
     return secondsLeft
 }
 }
-
-for (let i = 0; i < answerButtons.length; i++) {
-    answerButtons[i].addEventListener('click', buttonHandler());
-  }
