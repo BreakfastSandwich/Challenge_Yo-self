@@ -215,6 +215,7 @@ const questionNumber = (questNum) => {
     let currentQuestion = questionArray[questNum].question
     let answerArray = questionArray[questNum].answer
     questionEl.textContent = currentQuestion
+    scoreEl.textContent = ('Current Score: ' + score)
 
 
 
@@ -269,31 +270,33 @@ startBtnEl.addEventListener('click', startQuiz);
 
 
 function enterScore() {
-    userScoreEl.innerHTML = ('')
+
     scoreboardEl.classList.remove('hide')
+    userScoreEl.innerHTML = ('')
+    
     let userNameInput = document.createElement('input')
     userNameInput.setAttribute('type', 'text')
-    userNameInput.setAttribute('value', 'User Name')
+    userNameInput.setAttribute('placeholder', 'User Name')
     userNameInput.setAttribute('id', 'newUser')
     userScoreFinal = document.createElement('label')
     userScoreFinal.innerText = (' - ' + score)
-    let storeList = document.createElement('ul')
+    let storeList = document.createElement('div')
+    userScoreEl.appendChild(storeList)
     userScoreEl.appendChild(userNameInput)
     userScoreEl.appendChild(userScoreFinal)
-
-
     let scores = JSON.parse(localStorage.getItem('scoresArray')) || []
+
     for (let i = 0; i < scores.length; i++) {
         console.log(i)
-        let storedUser = scoresArray[i].userName
-        let storedScore = scoresArray[i].userScore
+        let storedUser = scores[i].userName
+        let storedScore = scores[i].userScore
         let printStored = document.createElement('li')
         printStored.innerText = (storedUser + ' - ' + storedScore)
         storeList.appendChild(printStored)
         // return storeList
     }
 
-    userScoreEl.appendChild(storeList)
+    
 
 
 }
@@ -326,7 +329,10 @@ playAgainBtnEl.addEventListener('click', () => {
 
     const newScore = new ScoreSave(user,score)
     console.log(newScore)
-    scoresArray.push(newScore)
+    scoresArray.unshift(newScore)
      
     localStorage.setItem("scoresArray", JSON.stringify(scoresArray))
+    location.reload()
 })
+
+scoreboardEl.addEventListener('click', endGame)
