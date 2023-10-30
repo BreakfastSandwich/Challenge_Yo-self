@@ -10,6 +10,12 @@ Additionally, the quiz features a countdown timer and score keeping function. th
 
 I hope you enjoy! :)
 
+View the code:
+https://github.com/BreakfastSandwich/Challenge_Yo-self
+
+View the deployed page:
+https://breakfastsandwich.github.io/Challenge_Yo-self/
+
 
 
 ![Alt text](<./assets/images/Screenshot 2023-10-30 181440.png>)
