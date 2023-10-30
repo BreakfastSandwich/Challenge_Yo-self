@@ -55,9 +55,12 @@ var nextBtnEl = document.getElementById('next-btn')
 var startBtnEl = document.getElementById('start-btn')
 var answerbuttonsEl = document.getElementById('answer_section')
 var answersEl = document.querySelectorAll('.answer')
+var userScoreEl = document.getElementById('userScore')
 var questNum = 0
 
-
+resetScoresBtnEl.addEventListener('click', () => {
+    localStorage.clear()
+})
 
 var questionArray = [
     {
@@ -178,10 +181,10 @@ function countDownTimer() {
         timerEl.textContent = secondsLeft + "s"
 
         if (secondsLeft <= 0) {
-            timerEl.textContent = "Out of time!"
+            timerEl.textContent = "Game Over!"
             secondsLeft = ('')
+            return
 
-            endGame()
         }
     }, 1000)
 };
@@ -265,6 +268,37 @@ nextBtnEl.addEventListener('click', () => questionNumber(++questNum))
 startBtnEl.addEventListener('click', startQuiz);
 
 
+function enterScore() {
+    userScoreEl.innerHTML = ('')
+    scoreboardEl.classList.remove('hide')
+    let userNameInput = document.createElement('input')
+    userNameInput.setAttribute('type', 'text')
+    userNameInput.setAttribute('value', 'User Name')
+    userNameInput.setAttribute('id', 'newUser')
+    userScoreFinal = document.createElement('label')
+    userScoreFinal.innerText = (' - ' + score)
+    let storeList = document.createElement('ul')
+    userScoreEl.appendChild(userNameInput)
+    userScoreEl.appendChild(userScoreFinal)
+
+
+    let scores = JSON.parse(localStorage.getItem('scoresArray')) || []
+    for (let i = 0; i < scores.length; i++) {
+        console.log(i)
+        let storedUser = scoresArray[i].userName
+        let storedScore = scoresArray[i].userScore
+        let printStored = document.createElement('li')
+        printStored.innerText = (storedUser + ' - ' + storedScore)
+        storeList.appendChild(printStored)
+        // return storeList
+    }
+
+    userScoreEl.appendChild(storeList)
+
+
+}
+
+
 
 
 
@@ -277,3 +311,22 @@ function endGame() {
     enterScore()
 }
 
+
+
+
+
+playAgainBtnEl.addEventListener('click', () => {
+    console.log('taco')
+    let scoresArray = JSON.parse(localStorage.getItem('scoresArray')) || []
+    let user = document.getElementById('newUser').value
+    function ScoreSave(userName,userScore) {
+        this.userName = userName
+        this.userScore = userScore
+    }
+
+    const newScore = new ScoreSave(user,score)
+    console.log(newScore)
+    scoresArray.push(newScore)
+     
+    localStorage.setItem("scoresArray", JSON.stringify(scoresArray))
+})
